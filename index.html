@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS - by Uzziah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hud-container">
+        <!-- Background Grid -->
+        <div class="grid-background"></div>
+
+        <!-- Central Core -->
+        <div class="central-core">
+            <svg class="core-svg" viewBox="0 0 300 300">
+                <defs>
+                    <radialGradient id="coreGradient">
+                        <stop offset="0%" style="stop-color:#00ffff;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#0088ff;stop-opacity:0.2" />
+                    </radialGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                
+                <!-- Outer rings -->
+                <circle cx="150" cy="150" r="140" class="ring ring-1"/>
+                <circle cx="150" cy="150" r="110" class="ring ring-2"/>
+                <circle cx="150" cy="150" r="80" class="ring ring-3"/>
+                
+                <!-- Core circle -->
+                <circle cx="150" cy="150" r="50" fill="url(#coreGradient)" class="core-circle" filter="url(#glow)"/>
+                
+                <!-- Center point -->
+                <circle cx="150" cy="150" r="8" fill="#00ffff" filter="url(#glow)"/>
+                
+                <!-- Rotating elements -->
+                <g class="rotating-ring">
+                    <circle cx="150" cy="150" r="120" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.3"/>
+                    <circle cx="150" cy="60" r="3" fill="#00ffff"/>
+                </g>
+            </svg>
+            
+            <!-- Voice Waveform -->
+            <div class="voice-waveform" id="voiceWaveform">
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+                <div class="wave"></div>
+            </div>
+            
+            <!-- Jarvis Label -->
+            <div class="core-label">
+                <div class="label-text">JARVIS</div>
+            </div>
+        </div>
+
+        <!-- Top Left Panel - Power Status -->
+        <div class="holographic-panel top-left" id="panel1">
+            <div class="panel-header">
+                <span class="header-text">POWER CORE</span>
+                <div class="header-line"></div>
+            </div>
+            <div class="panel-body">
+                <div class="gauge-container">
+                    <svg class="gauge" viewBox="0 0 200 120">
+                        <defs>
+                            <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%">
+                                <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0088ff;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M 30 100 A 70 70 0 0 1 170 100" fill="none" stroke="#1a4d6d" stroke-width="8"/>
+                        <path d="M 30 100 A 70 70 0 0 1 155 105" fill="none" stroke="url(#gaugeGrad)" stroke-width="6" class="gauge-fill"/>
+                        <circle cx="150" cy="105" r="8" fill="#00ffff" class="gauge-needle"/>
+                    </svg>
+                </div>
+                <div class="stat-line">
+                    <span>CAPACITY:</span>
+                    <span class="stat-value">98%</span>
+                </div>
+                <div class="stat-line">
+                    <span>OUTPUT:</span>
+                    <span class="stat-value">OPTIMAL</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Right Panel - System Status -->
+        <div class="holographic-panel top-right" id="panel2">
+            <div class="panel-header">
+                <span class="header-text">SYSTEM STATUS</span>
+                <div class="header-line"></div>
+            </div>
+            <div class="panel-body">
+                <div class="status-item">
+                    <span class="status-label">AI CORE:</span>
+                    <span class="status-badge online">ONLINE</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">VOICE:</span>
+                    <span class="status-badge online">ACTIVE</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">LANGUAGE:</span>
+                    <span class="status-badge online">ENGLISH</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">THREAT:</span>
+                    <span class="status-badge safe">SAFE</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Left Panel - Armor Status -->
+        <div class="holographic-panel bottom-left" id="panel3">
+            <div class="panel-header">
+                <span class="header-text">ARMOR INTEGRITY</span>
+                <div class="header-line"></div>
+            </div>
+            <div class="panel-body">
+                <div class="armor-visual">
+                    <svg viewBox="0 0 100 150" class="armor-suit">
+                        <path d="M50,10 L30,40 L35,60 L25,100 L50,140 L75,100 L65,60 L70,40 Z" fill="none" stroke="#00ffff" stroke-width="1.5" class="suit-outline"/>
+                        <circle cx="50" cy="35" r="8" fill="none" stroke="#00ffff" stroke-width="1"/>
+                    </svg>
+                </div>
+                <div class="stat-line">
+                    <span>INTEGRITY:</span>
+                    <span class="stat-value">95%</span>
+                </div>
+                <div class="stat-line">
+                    <span>REPAIR:</span>
+                    <span class="stat-value">ACTIVE</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Right Panel - Weapons -->
+        <div class="holographic-panel bottom-right" id="panel4">
+            <div class="panel-header">
+                <span class="header-text">WEAPONS ARRAY</span>
+                <div class="header-line"></div>
+            </div>
+            <div class="panel-body">
+                <div class="weapon-item">
+                    <span>REPULSORS:</span>
+                    <span class="weapon-status ready">READY</span>
+                </div>
+                <div class="weapon-item">
+                    <span>MISSILES:</span>
+                    <span class="weapon-status armed">ARMED</span>
+                </div>
+                <div class="weapon-item">
+                    <span>LASER:</span>
+                    <span class="weapon-status ready">READY</span>
+                </div>
+                <div class="weapon-item">
+                    <span>UNIBEAM:</span>
+                    <span class="weapon-status charging">CHARGING</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ripple Effect Elements -->
+        <div class="ripple-container">
+            <div class="ripple" style="left: 20%; top: 15%; animation-delay: 0s;"></div>
+            <div class="ripple" style="right: 25%; bottom: 20%; animation-delay: 1s;"></div>
+            <div class="ripple" style="left: 15%; bottom: 25%; animation-delay: 2s;"></div>
+        </div>
+
+        <!-- Control Panel Bottom -->
+        <div class="control-panel">
+            <button class="control-btn" onclick="toggleVoiceInput()">
+                <span class="btn-icon">🎤</span>
+                <span class="btn-text">VOICE COMMAND</span>
+            </button>
+            <button class="control-btn" onclick="toggleChat()">
+                <span class="btn-icon">💬</span>
+                <span class="btn-text">TEXT INPUT</span>
+            </button>
+            <button class="control-btn" onclick="startScan()">
+                <span class="btn-icon">🔍</span>
+                <span class="btn-text">SCAN</span>
+            </button>
+        </div>
+
+        <!-- Voice Input Modal -->
+        <div class="modal" id="voiceModal">
+            <div class="modal-content voice-modal">
+                <div class="modal-header">VOICE RECOGNITION ACTIVE</div>
+                <div class="voice-animation">
+                    <div class="pulse-circle"></div>
+                    <div class="pulse-circle"></div>
+                    <div class="pulse-circle"></div>
+                </div>
+                <div class="voice-text" id="voiceText">Listening for commands...</div>
+                <button class="modal-btn" onclick="toggleVoiceInput()">STOP</button>
+            </div>
+        </div>
+
+        <!-- Chat Modal -->
+        <div class="modal" id="chatModal">
+            <div class="modal-content chat-modal">
+                <div class="modal-header">
+                    <span>COMMUNICATION LINK</span>
+                    <button class="close-btn" onclick="toggleChat()">✕</button>
+                </div>
+                <div class="chat-display" id="chatDisplay">
+                    <div class="chat-message jarvis">Good day, sir. How may I be of service?</div>
+                </div>
+                <div class="chat-input-group">
+                    <input type="text" id="chatInput" placeholder="Enter command..." onkeypress="handleChatInput(event)">
+                    <button class="send-btn" onclick="sendChatMessage()">SEND</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scan Effect -->
+        <div class="scan-effect" id="scanEffect"></div>
+
+        <!-- Credit -->
+        <div class="credit">by Uzziah</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
